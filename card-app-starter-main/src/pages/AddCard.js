@@ -4,11 +4,50 @@ import CardForm from "../components/CardForm";
 import { addCard } from "../services/api";
 
 export default function AddCard() {
-  /* TODO: Complete the AddCard page
-    - display a form for adding a new card (use the CardForm component to display the form)
-    - handle form submission to call addCard API
-    - handle busy and error states
-    - style as a form UI */
+  const navigate = useNavigate();
 
-  return <main></main>;
+  const [values, setValues] = useState({
+    card_name: "",
+    card_pic: "",
+  });
+
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+
+  function handleChange(e) {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setBusy(true);
+    setError("");
+
+    try {
+      await addCard(values);
+      navigate("/cards");
+    } catch {
+      setError("Failed to add card");
+    }
+
+    setBusy(false);
+  }
+
+  return (
+    <main>
+      <h2>Add Card</h2>
+
+      <CardForm
+        values={values}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        busy={busy}
+        error={error}
+        submitText="Add Card"
+      />
+    </main>
+  );
 }
