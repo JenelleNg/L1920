@@ -76,7 +76,7 @@ app.post('/addcard', async (req, res) => {
 
 app.put("/editcard/:id", async (req, res) => {
     const { id } = req.params;
-    const { book_name, book_pic } = req.body;
+    const { card_name, card_pic } = req.body;
 
     try {
         let connection = await mysql.createConnection(dbConfig);
