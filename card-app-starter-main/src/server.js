@@ -88,7 +88,22 @@ app.put("/editcard/:id", async (req, res) => {
         res.json({ message: "Card id " + id + " updated successfully" });
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: "Server error - could not update book" });
+        res.status(500).json({ message: "Server error - could not update card" });
+    }
+});
+
+
+app.delete("/deletecard/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        let connection = await mysql.createConnection(dbConfig);
+        await connection.execute("DELETE FROM cards WHERE id = ?", [id]);
+
+        res.json({ message: "Card id " + id + " deleted successfully" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Server error - could not delete card" });
     }
 });
 
