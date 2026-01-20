@@ -5,20 +5,12 @@ import { addCard } from "../services/api";
 
 export default function AddCard() {
   const navigate = useNavigate();
-
-  const [values, setValues] = useState({
-    card_name: "",
-    card_pic: "",
-  });
-
+  const [values, setValues] = useState({ card_name: "", card_pic: "" });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
   function handleChange(e) {
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value,
-    });
+    setValues({ ...values, [e.target.name]: e.target.value });
   }
 
   async function handleSubmit(e) {
@@ -39,7 +31,6 @@ export default function AddCard() {
   return (
     <main>
       <h2>Add Card</h2>
-
       <CardForm
         values={values}
         onChange={handleChange}

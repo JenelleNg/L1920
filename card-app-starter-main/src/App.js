@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/allcards" element={<CardList />} />
+        <Route path="/cards" element={<CardList />} />
         <Route path="/cards/new" element={<AddCard />} />
         <Route path="/cards/:id/edit" element={<EditCard />} />
       </Routes>

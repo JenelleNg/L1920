@@ -26,9 +26,7 @@ export default function CardForm({
 
       {error && <p className="error">{error}</p>}
 
-      <button disabled={busy}>
-        {submitText}
-      </button>
+      <button disabled={busy}>{submitText}</button>
     </form>
   );
 }

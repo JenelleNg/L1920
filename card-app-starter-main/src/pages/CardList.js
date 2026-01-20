@@ -9,37 +9,57 @@ export default function CardList() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    getCards()
-      .then((data) => {
+    async function fetchCards() {
+      setLoading(true);
+      setError("");
+
+      try {
+        const data = await getCards();
         setCards(data);
-        setLoading(false);
-      })
-      .catch(() => {
+      } catch {
         setError("Failed to load cards");
-        setLoading(false);
-      });
+      }
+
+      setLoading(false);
+    }
+
+    fetchCards();
   }, []);
 
   async function handleDelete(card) {
     setBusy(true);
-    await deleteCard(card.id);
-    setCards(cards.filter((c) => c.id !== card.id));
+    setError("");
+
+    try {
+      await deleteCard(card.id);
+      setCards(cards.filter(c => c.id !== card.id));
+    } catch {
+      setError("Failed to delete card");
+    }
+
     setBusy(false);
   }
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) {
+    return <p>Loading cards...</p>;
+  }
+
+  if (error) {
+    return <p className="error">{error}</p>;
+  }
 
   return (
-    <main className="grid">
-      {cards.map((card) => (
-        <Card
-          key={card.id}
-          card={card}
-          onDelete={handleDelete}
-          busy={busy}
-        />
-      ))}
+    <main>
+      <div className="card-grid">
+        {cards.map(card => (
+          <Card
+            key={card.id}
+            card={card}
+            onDelete={handleDelete}
+            busy={busy}
+          />
+        ))}
+      </div>
     </main>
   );
 }
