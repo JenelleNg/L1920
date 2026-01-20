@@ -87,8 +87,8 @@ p {
    ========================= */
 
 .card img {
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 90x;
+  max-height: 90x;
   width: auto;
   height: auto;
   object-fit: contain;
