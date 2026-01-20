@@ -16,7 +16,7 @@ body {
 }
 
 main {
-  max-width: 1100px; /* slightly smaller overall layout */
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -29,8 +29,8 @@ h1,
 h2,
 h3 {
   margin-top: 0;
-  color: #111;
   font-weight: 600;
+  color: #111;
 }
 
 p {
@@ -53,8 +53,15 @@ p {
   margin: 32px auto;
 }
 
+.loading {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 48px;
+}
+
 /* =========================
-   Card Grid Layout (SMALLER)
+   Card Grid Layout
    ========================= */
 
 .card-grid {
@@ -64,7 +71,7 @@ p {
 }
 
 /* =========================
-   Card Component (SMALLER)
+   Card Component
    ========================= */
 
 .card {
@@ -75,6 +82,11 @@ p {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   text-align: center;
+
+  /* layout improvement */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card:hover {
@@ -83,14 +95,12 @@ p {
 }
 
 /* =========================
-   Card Images (SMALLER)
+   Card Images
    ========================= */
 
 .card img {
-  max-width: 300px;
-  max-height: 300px;
-  width: auto;
-  height: auto;
+  max-width: 100%;
+  max-height: 200px;
   object-fit: contain;
   display: block;
   margin: 0 auto 8px;
@@ -101,8 +111,8 @@ p {
    ========================= */
 
 .card h3 {
-  margin-bottom: 6px;
   font-size: 0.95rem;
+  margin-bottom: 6px;
   color: #111;
 }
 
@@ -112,12 +122,37 @@ p {
 }
 
 /* =========================
-   Buttons (COMPACT)
+   Card Actions
+   ========================= */
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Edit link styled like button */
+.card-actions a {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  color: #111;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.card-actions a:hover {
+  background-color: #f0f0f0;
+}
+
+/* =========================
+   Buttons
    ========================= */
 
 button {
-  display: inline-block;
-  margin-top: 8px;
   padding: 6px 12px;
   border-radius: 5px;
   border: 1px solid #cccccc;
@@ -138,18 +173,65 @@ button:disabled {
 }
 
 /* =========================
-   Loading State
+   Form Styling
    ========================= */
 
-.loading {
-  text-align: center;
-  font-size: 1rem;
-  color: #666;
-  margin-top: 48px;
+.form {
+  max-width: 420px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e6e6e6;
+}
+
+.form label {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  font-size: 0.85rem;
+}
+
+.form button {
+  margin-top: 16px;
+  width: 100%;
 }
 
 /* =========================
-   Code Blocks (optional)
+   Home Page
+   ========================= */
+
+.home {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.home a {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 18px;
+  background-color: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.home a:hover {
+  background-color: #333;
+}
+
+/* =========================
+   Code Blocks
    ========================= */
 
 code {
