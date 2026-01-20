@@ -9,7 +9,13 @@ export default function Card({ card, onDelete, busy }) {
 
       <div className="card-actions">
         <Link to={`/cards/${card.id}/edit`}>Edit</Link>
-        <button disabled={busy} onClick={() => onDelete(card)}>
+        <button
+          disabled={busy}
+          onClick={() =>
+            window.confirm("Are you sure you want to delete this card?") &&
+            onDelete(card)
+          }
+        >
           Delete
         </button>
       </div>
