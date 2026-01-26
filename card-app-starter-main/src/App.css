@@ -1,243 +1,197 @@
-/* =========================
-   Global Styles
-   ========================= */
+:root {
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --bg2: #f9fafb;
+  --danger: #ef4444;
+}
 
 * {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
-  background-color: #f5f5f5;
-  color: #1f1f1f;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.5;
+  font-family: system-ui, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg2);
 }
 
-main {
+.container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 18px;
 }
 
-/* =========================
-   Typography
-   ========================= */
-
-h1,
-h2,
-h3 {
-  margin-top: 0;
-  font-weight: 600;
-  color: #111;
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
 }
 
-p {
-  margin: 0.4rem 0;
-  color: #444;
+.navbar__brand {
+  font-weight: 800;
+}
+.navbar__links {
+  display: flex;
+  gap: 12px;
+}
+.navbar__links a {
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: var(--text);
+}
+.navbar__links a.active {
+  background: #111827;
+  color: white;
 }
 
-/* =========================
-   Status Messages
-   ========================= */
-
-.error {
-  background-color: #ffffff;
-  color: #b00020;
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #e0e0e0;
-  text-align: center;
-  max-width: 420px;
-  margin: 32px auto;
+.page {
+  padding: 6px 0;
+}
+.page__title {
+  margin: 10px 0 14px;
+}
+.page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.loading {
-  text-align: center;
-  font-size: 1rem;
-  color: #666;
-  margin-top: 48px;
+.cardbox {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
 }
 
-/* =========================
-   Card Grid Layout
-   ========================= */
-
-.card-grid {
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
 }
-
-/* =========================
-   Card Component
-   ========================= */
 
 .card {
-  background-color: #ffffff;
-  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.card__imgWrap {
+  width: 100%;
+  height: 150px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__body {
   padding: 12px;
-  border: 1px solid #e6e6e6;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  text-align: center;
+}
+.card__title {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
 
-  /* layout improvement */
+.form {
+  display: grid;
+  gap: 12px;
+}
+.field {
+  display: grid;
+  gap: 6px;
+}
+.label {
+  font-size: 12px;
+  color: #374151;
+}
+.input {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  outline: none;
+  background: white;
+}
+.hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.actions {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
 }
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* =========================
-   Card Images
-   ========================= */
-
-.card img {
-  max-width: 100%;
-  max-height: 200px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 8px;
-}
-
-/* =========================
-   Card Text
-   ========================= */
-
-.card h3 {
-  font-size: 0.95rem;
-  margin-bottom: 6px;
-  color: #111;
-}
-
-.card p {
-  font-size: 0.85rem;
-  color: #555;
-}
-
-/* =========================
-   Card Actions
-   ========================= */
-
-.card-actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
+.actions--tight {
   margin-top: 10px;
 }
 
-/* Edit link styled like button */
-.card-actions a {
-  padding: 6px 12px;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  border: 1px solid #cccccc;
-  background-color: #ffffff;
-  color: #111;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-}
-
-.card-actions a:hover {
-  background-color: #f0f0f0;
-}
-
-/* =========================
-   Buttons
-   ========================= */
-
-button {
-  padding: 6px 12px;
-  border-radius: 5px;
-  border: 1px solid #cccccc;
-  background-color: #111111;
-  color: #ffffff;
-  font-size: 0.8rem;
+.btn {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 12px;
   cursor: pointer;
-  transition: background-color 0.2s ease, opacity 0.2s ease;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-button:hover {
-  background-color: #333333;
+.btn--primary {
+  background: #111827;
+  color: white;
+}
+.btn--ghost {
+  background: white;
+  border-color: #d1d5db;
+  color: #111827;
+}
+.btn--danger {
+  background: var(--danger);
+  color: white;
 }
 
-button:disabled {
-  opacity: 0.5;
+.btn:disabled {
+  opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* =========================
-   Form Styling
-   ========================= */
-
-.form {
-  max-width: 420px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  border: 1px solid #e6e6e6;
+.muted {
+  color: var(--muted);
+}
+.small {
+  font-size: 12px;
 }
 
-.form label {
-  display: block;
-  margin-top: 12px;
-  font-size: 0.85rem;
-  color: #333;
+.alert {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin: 10px 0;
 }
-
-.form input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border-radius: 4px;
-  border: 1px solid #cccccc;
-  font-size: 0.85rem;
+.alert--error {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
 }
-
-.form button {
-  margin-top: 16px;
-  width: 100%;
-}
-
-/* =========================
-   Home Page
-   ========================= */
-
-.home {
-  text-align: center;
-  margin-top: 60px;
-}
-
-.home a {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 10px 18px;
-  background-color: #111;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-}
-
-.home a:hover {
-  background-color: #333;
-}
-
-/* =========================
-   Code Blocks
-   ========================= */
-
-code {
-  background-color: #eeeeee;
-  padding: 2px 5px;
-  border-radius: 4px;
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 0.85rem;
+.list {
+  margin: 6px 0 0;
 }
