@@ -9,6 +9,11 @@ export default function AddCard() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
+  useEffect( () => {
+    const token = localStorage.getItem("token");
+    if (!token) navigate("/login");
+  }, [navigate])
+
   function handleChange(e) {
     setValues({ ...values, [e.target.name]: e.target.value });
   }

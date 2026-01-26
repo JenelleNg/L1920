@@ -15,6 +15,7 @@ function App() {
         <Route path="/cards" element={<CardList />} />
         <Route path="/cards/new" element={<AddCard />} />
         <Route path="/cards/:id/edit" element={<EditCard />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
