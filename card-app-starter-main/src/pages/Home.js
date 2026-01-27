@@ -4,10 +4,6 @@ export default function Home() {
   return (
     <section className="page">
       <h1 className="page__title">Welcome 👋</h1>
-      <p className="muted">
-        This app demonstrates <b>React Router + CRUD</b> using your own Express
-        API and cloud database.
-      </p>
 
       <div className="cardbox">
         <h3>What you can do</h3>
